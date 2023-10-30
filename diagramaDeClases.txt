@@ -1,0 +1,64 @@
+@startuml
+class Usuario{
+  -nombreUsuario : String
+  -email : String
+}
+
+class Cirugia{
+ -lugar : Lugar
+ -obraSocial : ObraSocial
+ -especialidad : Especialidad
+ -precio : Float
+ -practica : Practica
+ -fechaPago : LocalDateTime 
+ -fechaRealizacion : LocalDateTime
+ -estadoPago : EstadoPago
+ -HonorariosDeIntegrantes: List<HonorarioPorIntegrante>
+}
+
+class HonorarioPorIntegrante{
+ -persona : Persona
+ -cuantoCorresponde : Float
+ -criterioCobro : CriterioCobro 
+
+ -cuantoCorresponde(Practica practica) : Float
+}
+
+interface CriterioCobro {
+ - cuantoCobra(Float precioCirugia) : Float
+}
+
+class CobrarPorPorcentaje
+class CobrarPorMonto
+
+HonorarioPorIntegrante --> CriterioCobro
+CobrarPorMonto ..|> CriterioCobro 
+CobrarPorPorcentaje ..|> CriterioCobro 
+
+
+class Equipo{
+ -integrantes : List<Persona>
+}
+
+enum EstadoPago{
+ COBRADO
+ FACTURADO
+ REPARTIDO
+}
+
+class Practica{
+ -lugar : Lugar
+ -especialidad : Especialidad
+ -obraSocial : ObraSocial
+ -precio : Float 
+}
+
+class Persona{
+ -nombre: String
+ -rol : Rol
+}
+
+enum Rol{
+ JEFE_DE_CIRUGIA
+}
+@enduml
