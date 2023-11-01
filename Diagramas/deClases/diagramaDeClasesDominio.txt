@@ -1,7 +1,9 @@
 @startuml
 class Usuario{
-  -nombreUsuario : String
-  -email : String
+ -nombreUsuario : String
+ -email : String
+ -contrasenia : String
+ -rolEnSistema : RolEnSistema
 }
 
 class Cirugia{
@@ -13,6 +15,7 @@ class Cirugia{
  -fechaPago : LocalDateTime 
  -fechaRealizacion : LocalDateTime
  -estadoPago : EstadoPago
+ -integrantes : List<Persona>
  -HonorariosDeIntegrantes: List<HonorarioPorIntegrante>
 }
 
@@ -31,16 +34,12 @@ interface CriterioCobro {
 class CobrarPorPorcentaje
 class CobrarPorMonto
 
-HonorarioPorIntegrante --> CriterioCobro
-CobrarPorMonto ..|> CriterioCobro 
-CobrarPorPorcentaje ..|> CriterioCobro 
-
-
 class Equipo{
  -integrantes : List<Persona>
 }
 
 enum EstadoPago{
+ En_ESPERA
  COBRADO
  FACTURADO
  REPARTIDO
@@ -56,9 +55,43 @@ class Practica{
 class Persona{
  -nombre: String
  -rol : Rol
+ -usuario : Usuario
 }
 
-enum Rol{
- JEFE_DE_CIRUGIA
+class Integrante{
+ -persona : Persona
+ -rolEnCirugia : RolEnSistema
 }
+
+enum RolEnCirugia{
+ CIRUJANO_PRINCIPAL
+ CIRUJANO_AUXILIAR
+ ANESTESISTA
+ PERFUSIONISTA
+ INSTRUMENTADOR
+}
+
+enum RolEnSistema{
+ JEFE_DE_CIRUGIA
+ EMPLEADO
+}
+
+
+HonorarioPorIntegrante --> Persona
+
+CriterioCobro <|.. CobrarPorMonto 
+CriterioCobro <|.. CobrarPorPorcentaje 
+
+Persona --> CriterioCobro
+Persona --> Usuario
+Persona --> RolEnCirugia
+
+Usuario --> RolEnSistema
+
+Equipo --> "*" Persona
+
+Cirugia --> Practica
+Cirugia --> EstadoPago
+Cirugia --> "*" Persona
+Cirugia --> "*" HonorarioPorIntegrante
 @enduml
