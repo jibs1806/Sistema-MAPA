@@ -1,14 +1,12 @@
-package cirugias;
+package surgeries;
 
-import domain.personas.RolEnSistema;
-import domain.personas.Usuario;
-import org.junit.jupiter.api.Assertions;
+import domain.people.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class CirugiasTest {
-    private Usuario usuarioGenerico;
+public class TestSurgeries {
+    private User userGenerico;
 
     @BeforeEach
     public void init(){
