@@ -1,116 +1,100 @@
 @startuml
-class Usuario{
- -nombreUsuario : String
+class User{
+ -userName : String
  -email : String
- -contrasenia : String
- -rolEnSistema : RolEnSistema
+ -password : String
+ -systemRole : SystemRole
 }
 
-class Centro{
- -nombre : String
+class Centre{
+ -name : String
 }
 
-class ObraSocial{
- -nombre : String
+class HealthInsurance{
+ -name : String
 }
 
-class Especialidad{
- -nombre : String
+class Specialty {
+ -name : String
 }
 
-class Cirugia{
- -Centro: centro
- -obraSocial : ObraSocial
- -especialidad : Especialidad
- -precio : Float
- -practica : Practica
- -fechaPago : LocalDateTime 
- -fechaRealizacion : LocalDateTime
- -estadoPago : EstadoPago
- -integrantes : List<Persona>
- -HonorariosDeIntegrantes: List<HonorarioPorIntegrante>
+class Surgery{
+ -Centre: centre
+ -healthInsurance : HealthInsurance
+ -specialty : Specialty 
+ -price : Double
+ -practice : Practice
+ -paymentDate : LocalDateTime 
+ -completionDate : LocalDateTime
+ -paymentStatus: PaymentStatus
+ -members: List<Person>
+ -memberBasedFees : List<MemberBasedFees>
+ -chiefSurgeryFee : MemberBasedFee
 }
 
-class HonorarioPorIntegrante{
- -persona : Persona
- -cuantoCorresponde : Float
- -criterioCobro : CriterioCobro 
-
- -cuantoCorresponde(Practica practica) : Float
+class MemberBasedFee{
+ -person : Person
+ -assignedAmount : Double
 }
 
-class HonorarioPorRol{
- -rolEnCirugia : RolEnCirugia
- -valor : Float
+class RoleBasedFee{
+ -surgeryRole : SurgeryRole
+ -percentage : Double
 }
 
-interface CriterioCobro {
- - cuantoCobra(Practica practica) : Float
+
+enum PaymentStatus{
+ PENDING
+ RECEIVED
+ BILLED
+ DISTRIBUTED
 }
 
-class CobrarPorPorcentaje
-class CobrarPorMonto
-
-class Equipo{
- -integrantes : List<Persona>
-}
-
-enum EstadoPago{
- EN_ESPERA
- COBRADO
- FACTURADO
- REPARTIDO
-}
-
-class Practica{
+class Practice{
  -lugar : Lugar
  -especialidad : Especialidad
  -obraSocial : ObraSocial
- -precio : Float 
+ -precio : Double
  -honoariosPorRol : List<HonorarioPorRol>
 }
 
-class Persona{
- -nombre: String
- -rolEnCirugia : RolEnCirugia
- -usuario : Usuario
+class Person{
+ -name: String
+ -surgeryRole: SurgeryRole
+ -user : User
 }
 
-enum RolEnCirugia{
- CIRUJANO_PRINCIPAL
- CIRUJANO_AUXILIAR
- ANESTESISTA
- PERFUSIONISTA
- INSTRUMENTADOR
+enum SurgeryRole{
+ CHIEF_SURGERY
+ MAIN_SURGEON
+ AUXILIARY_SURGEON
+ ANESTHESIST
+ PERFUSIONIST
+ INSTRUMENTATOR
 }
 
-enum RolEnSistema{
- JEFE_DE_CIRUGIA
- EMPLEADO
+enum SystemRole{
+ CHIEF_OF_SURGERY,
+ EMPLOYEE
 }
 
-HonorarioPorRol --> RolEnCirugia
+RoleBasedFee --> SurgeryRole
 
-HonorarioPorIntegrante --> Persona
-HonorarioPorIntegrante --> CriterioCobro
+MemberBasedFee --> Person
 
-CriterioCobro <|.. CobrarPorMonto 
-CriterioCobro <|.. CobrarPorPorcentaje 
 
-Practica --> "*" HonorarioPorRol
+Practice --> "*" RoleBasedFee
 
-Persona --> Usuario
-Persona --> RolEnCirugia
+Person --> User
+Person --> SurgeryRole
 
-Usuario --> RolEnSistema
+User --> SystemRole
 
-Equipo --> "*" Persona
-
-Cirugia --> Centro
-Cirugia --> ObraSocial
-Cirugia --> Especialidad
-Cirugia --> Practica
-Cirugia --> EstadoPago
-Cirugia --> "*" Persona
-Cirugia --> "*" HonorarioPorIntegrante
+Surgery --> Centre
+Surgery --> HealthInsurance
+Surgery --> Specialty
+Surgery --> Practice
+Surgery --> PaymentStatus
+Surgery --> "*" Person
+Surgery --> "*" MemberBasedFee
 @enduml
