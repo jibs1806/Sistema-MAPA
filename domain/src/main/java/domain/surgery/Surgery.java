@@ -3,6 +3,7 @@ package domain.surgery;
 import domain.surgery.fees.MemberBasedFee;
 import domain.people.HealthInsurance;
 import domain.people.Person;
+import domain.surgery.paramSurgery.ParamSurgery;
 import domain.surgery.practice.Practice;
 import lombok.Getter;
 import lombok.Setter;

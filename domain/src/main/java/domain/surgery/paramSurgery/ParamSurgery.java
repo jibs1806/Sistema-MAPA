@@ -1,4 +1,4 @@
-package domain.surgery;
+package domain.surgery.paramSurgery;
 
 import domain.surgery.fees.MemberBasedFee;
 import domain.people.Person;
