@@ -2,6 +2,7 @@ package domain.surgery;
 
 import domain.surgery.fees.MemberBasedFee;
 import domain.people.Person;
+import domain.surgery.practice.Practice;
 import lombok.Setter;
 import lombok.Getter;
 
@@ -10,11 +11,12 @@ import java.util.List;
 
 @Getter @Setter
 public class ParamSurgery {
-    private Practice practica;
-    private Float precio;
-    private LocalDateTime fechaRealizacion;
-    private List<Person> integrantes;
-    private List<MemberBasedFee> honorariosDeIntegrantes;
+    private String detail;
+    private Practice practice;
+    private LocalDateTime completionDate;
+    private List<Person> members;
+    private List<MemberBasedFee> memberBasedFees;
+    private Person chiefSurgery;
 
     public ParamSurgery(){
         

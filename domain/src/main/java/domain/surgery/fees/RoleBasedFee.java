@@ -7,10 +7,10 @@ import lombok.Setter;
 @Getter @Setter
 public class RoleBasedFee {
     private SurgeryRole surgeryRole;
-    private Float valor;
+    private Double percentage;
 
-    public RoleBasedFee(SurgeryRole surgeryRole, Float valor) {
+    public RoleBasedFee(SurgeryRole surgeryRole, Double percentage) {
         this.surgeryRole = surgeryRole;
-        this.valor = valor;
+        this.percentage = percentage;
     }
 }

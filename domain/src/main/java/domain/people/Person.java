@@ -1,5 +1,9 @@
 package domain.people;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
 public class Person {
     private User user;
     private String name;
