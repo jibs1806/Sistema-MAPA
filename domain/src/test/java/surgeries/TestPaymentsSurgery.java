@@ -5,7 +5,7 @@ import domain.people.SurgeryRole;
 import domain.surgery.SurgeryPaymentAsigner;
 import domain.surgery.fees.MemberBasedFee;
 import domain.surgery.practice.ParamPractice;
-import domain.surgery.ParamSurgery;
+import domain.surgery.paramSurgery.ParamSurgery;
 import domain.surgery.practice.Practice;
 import domain.surgery.Surgery;
 import domain.surgery.fees.RoleBasedFee;
@@ -33,7 +33,7 @@ public class TestPaymentsSurgery {
 
     public List<Person> createTestMembers(){
         Person chiefSurgeon = new Person(null, "Lucho", SurgeryRole.CHIEF_SURGERY);
-        Person anesthesist = new Person(null, "Lucho", SurgeryRole.ANESTHESIST);
+        Person anesthesist = new Person(null, "Carlos", SurgeryRole.ANESTHESIST);
         Person auxiliarySurgeon = new Person(null, "Juani", SurgeryRole.AUXILIARY_SURGEON);
 
         List<Person> members = new ArrayList<>();
@@ -84,7 +84,7 @@ public class TestPaymentsSurgery {
     @DisplayName("The chief of surgery gets asigned the remaining amount")
     public void chiefSurgeryPaymentAsignment(){
 
-        SurgeryPaymentAsigner.asignPayments(surgery);
+        SurgeryPaymentAsigner.calculatePayments(surgery);
 
         Double chiefSurgeryAsigned = surgery.getChiefSurgeryFee().getAssignedAmount();
 
@@ -96,7 +96,7 @@ public class TestPaymentsSurgery {
     public void asignAuxiliarySurgeonPayment(){
         Person auxiliarySurgeon = new Person(null, "Lucho", SurgeryRole.AUXILIARY_SURGEON);
 
-        MemberBasedFee auxiliarySurgeonFee = SurgeryPaymentAsigner.asignMemberPayment(practice, auxiliarySurgeon);
+        MemberBasedFee auxiliarySurgeonFee = SurgeryPaymentAsigner.calculateMemberPayment(practice, auxiliarySurgeon);
 
         Double auxiliarySurgeonAsigned = auxiliarySurgeonFee.getAssignedAmount();
 
@@ -106,7 +106,7 @@ public class TestPaymentsSurgery {
     @Test
     @DisplayName("All members get asigned the correct amount")
     public void asignAllMemberPayments(){
-        List<MemberBasedFee> memberBasedFees = SurgeryPaymentAsigner.asignAllMemberPayments(practice, members);
+        List<MemberBasedFee> memberBasedFees = SurgeryPaymentAsigner.calculateAllMemberPayments(practice, members);
 
         Double anesthesistAsigned = memberBasedFees.get(0).getAssignedAmount();
         Double auxiliarySurgeonAsigned = memberBasedFees.get(1).getAssignedAmount();
