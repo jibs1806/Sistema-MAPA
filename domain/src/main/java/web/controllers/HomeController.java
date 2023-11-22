@@ -15,6 +15,6 @@ public class HomeController extends Controller{
     public void showHome(Context context){
         Map<String, Object> model = new HashMap<>();
 
-        context.render("index.hbs", model);
+        context.render("login.hbs", model);
     }
 }

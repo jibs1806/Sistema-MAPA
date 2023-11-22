@@ -21,7 +21,7 @@ public class LoginController extends Controller {
 
         modificarModelSiEstaLogueado(context, model);
 
-        context.render("index.hbs", model);
+        context.render("login.hbs", model);
     }
 
     public void mostrarPantallaLogin(Context context){
