@@ -1,29 +1,71 @@
 package org.mapa.MAPA.domain.surgery;
 
+import jakarta.persistence.*;
 import org.mapa.MAPA.domain.people.HealthInsurance;
 import org.mapa.MAPA.domain.people.Person;
 import org.mapa.MAPA.domain.surgery.fees.MemberBasedFee;
-import org.mapa.MAPA.domain.surgery.paramSurgery.ParamSurgery;
 import org.mapa.MAPA.domain.surgery.practice.Practice;
 import lombok.Getter;
 import lombok.Setter;
+import org.mapa.MAPA.persistence.Persistent;
+import org.mapa.MAPA.persistence.converter.ZonedDateTimeConverter;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 
+@Entity
+@Table()
 @Getter @Setter
-public class Surgery {
+public class Surgery extends Persistent {
+
+    @Column(name = "detail")
     private String detail;
+
+    @ManyToOne
+    @JoinColumn(name = "practice_id", referencedColumnName = "id")
     private Practice practice;
+
+    @ManyToOne
+    @JoinColumn(name = "centre_id", referencedColumnName = "id")
     private Centre centre;
+
+    @ManyToOne
+    @JoinColumn(name = "healthInsurance_id", referencedColumnName = "id")
     private HealthInsurance healthInsurance;
+
+    @ManyToOne
+    @JoinColumn(name = "specialty_id", referencedColumnName = "id")
     private Specialty specialty;
+
+    @Column(name = "price")
     private Double price;
-    private LocalDateTime paymentDate;
-    private LocalDateTime completionDate;
+
+    @Convert(converter = ZonedDateTimeConverter.class)
+    @Column(name = "paymentDate")
+    private ZonedDateTime paymentDate;
+
+    @Convert(converter = ZonedDateTimeConverter.class)
+    @Column(name = "completionDate")
+    private ZonedDateTime completionDate;
+
+    @Column(name = "paymentStatus")
+    @Enumerated(EnumType.STRING)
     private PaymentStatus paymentStatus;
+
+    @ManyToMany
+    @JoinTable(
+            name = "Members",
+            joinColumns = @JoinColumn(name = "surgery_id"),
+            inverseJoinColumns = @JoinColumn(name = "person_id")
+    )
     private List<Person> members;
+
+    @OneToMany(mappedBy = "surgery")
+    @Transient
     private List<MemberBasedFee> memberBasedFees;
+
+    @ManyToOne
+    @JoinColumn(name = "chiefSurgeryFee_id", referencedColumnName = "id")
     private MemberBasedFee chiefSurgeryFee;
 
     public Surgery(ParamSurgery paramSurgery) {
@@ -38,5 +80,9 @@ public class Surgery {
         this.memberBasedFees = paramSurgery.getMemberBasedFees();
         this.detail = paramSurgery.getDetail();
         this.chiefSurgeryFee = new MemberBasedFee(paramSurgery.getChiefSurgery());
+    }
+
+    public Surgery() {
+
     }
 }

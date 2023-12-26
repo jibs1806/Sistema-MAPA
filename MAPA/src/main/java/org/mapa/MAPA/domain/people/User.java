@@ -1,16 +1,25 @@
 package org.mapa.MAPA.domain.people;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.mapa.MAPA.persistence.Persistent;
 
+@Entity
+@Table(name = "User")
 @Getter @Setter
-public class User {
+public class User extends Persistent{
+    @Column(name = "username")
     private String userName;
 
+    @Column(name = "password")
     private String password;
 
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "systemRole")
+    @Enumerated(EnumType.STRING)
     private SystemRole systemRole;
 
     public User(String userName, String password, String email, SystemRole systemRole) {

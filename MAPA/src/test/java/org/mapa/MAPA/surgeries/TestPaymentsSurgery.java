@@ -6,15 +6,16 @@ import org.junit.jupiter.api.Test;
 
 import org.mapa.MAPA.domain.people.SurgeryRole;
 import org.mapa.MAPA.domain.surgery.Surgery;
-import org.mapa.MAPA.domain.surgery.SurgeryPaymentAsigner;
+import org.mapa.MAPA.services.SurgeryPaymentAsigner;
 import org.mapa.MAPA.domain.surgery.fees.MemberBasedFee;
 import org.mapa.MAPA.domain.surgery.fees.RoleBasedFee;
-import org.mapa.MAPA.domain.surgery.paramSurgery.ParamSurgery;
+import org.mapa.MAPA.domain.surgery.ParamSurgery;
 import org.mapa.MAPA.domain.surgery.practice.ParamPractice;
 import org.mapa.MAPA.domain.surgery.practice.Practice;
 import org.mapa.MAPA.domain.people.Person;
 
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +71,7 @@ public class TestPaymentsSurgery {
     public Surgery createTestSurgery(List<Person> members, Practice practice){
         ParamSurgery paramSurgery = new ParamSurgery();
 
-        LocalDateTime completionDate = LocalDateTime.now();
+        ZonedDateTime completionDate = ZonedDateTime.now();
 
         paramSurgery.setCompletionDate(completionDate);
         paramSurgery.setMembers(members);

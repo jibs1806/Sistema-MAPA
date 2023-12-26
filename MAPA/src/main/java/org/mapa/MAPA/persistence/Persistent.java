@@ -1,8 +1,17 @@
 package org.mapa.MAPA.persistence;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 
-public class Persistent {
+import java.io.Serializable;
+
+@MappedSuperclass
+public abstract class Persistent implements Serializable {
+    @Id
+    @GeneratedValue
     @Getter
     private Long id;
 }

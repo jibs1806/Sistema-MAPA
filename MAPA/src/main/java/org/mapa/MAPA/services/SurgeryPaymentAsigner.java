@@ -1,14 +1,17 @@
-package org.mapa.MAPA.domain.surgery;
+package org.mapa.MAPA.services;
 
-import org.mapa.MAPA.domain.people.Person;
-import org.mapa.MAPA.domain.surgery.fees.MemberBasedFee;
-import org.mapa.MAPA.domain.surgery.practice.Practice;
 import lombok.Getter;
 import lombok.Setter;
+import org.mapa.MAPA.domain.people.Person;
+import org.mapa.MAPA.domain.surgery.Surgery;
+import org.mapa.MAPA.domain.surgery.fees.MemberBasedFee;
+import org.mapa.MAPA.domain.surgery.practice.Practice;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 @Getter @Setter
 public class SurgeryPaymentAsigner {
     public static void calculatePayments(Surgery surgery){
