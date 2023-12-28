@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="head">
+        <meta charset="utf-8"/>
+        <title>Base Title</title>
+        <link rel="stylesheet" th:href="@{/css/base.css}">
+    </head>
+    <body>
+        <nav th:fragment="nav">
+            <div>
+                <ul>
+                    <li><a th:href="@{/surgery}">Cirugias</a></li>
+                    <li><a th:href="@{/aboutUs}">About us</a></li>
+                </ul>
+            </div>
+        </nav>
+    <footer th:fragment="footer">
+        &copy; 2023 MAPA
+    </footer>
+    </body>
+</html>

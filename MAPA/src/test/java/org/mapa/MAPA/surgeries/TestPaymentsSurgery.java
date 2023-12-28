@@ -4,17 +4,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import org.mapa.MAPA.domain.people.Person;
 import org.mapa.MAPA.domain.people.SurgeryRole;
+import org.mapa.MAPA.domain.surgery.ParamSurgery;
 import org.mapa.MAPA.domain.surgery.Surgery;
-import org.mapa.MAPA.services.SurgeryPaymentAsigner;
 import org.mapa.MAPA.domain.surgery.fees.MemberBasedFee;
 import org.mapa.MAPA.domain.surgery.fees.RoleBasedFee;
-import org.mapa.MAPA.domain.surgery.ParamSurgery;
 import org.mapa.MAPA.domain.surgery.practice.ParamPractice;
 import org.mapa.MAPA.domain.surgery.practice.Practice;
-import org.mapa.MAPA.domain.people.Person;
+import org.mapa.MAPA.services.SurgeryPaymentAsigner;
 
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;

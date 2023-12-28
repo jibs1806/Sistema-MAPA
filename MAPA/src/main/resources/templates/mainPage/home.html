@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8"/>
+        <title>MAPA system</title>
+        <link rel="stylesheet" th:href="@{/css/palette.css}">
+        <link rel="stylesheet" th:href="@{/css/home.css}">
+        <link rel="stylesheet" th:href="@{/css/base.css}">
+    </head>
+    <body>
+        <header>Home</header>
+        <div class="main-container">
+
+            <img th:src="@{/images/photoHome.jpg}" class="home-photo">
+
+            <div class = "form-container">
+                <div class ="form-title-container">
+                    <h3>Log in</h3>
+                </div>
+
+                <form th:action="@{/login}" method = "POST">
+
+                    <div class ="form-input-container">
+                        <label><b>Username</b></label>
+                        <input class = "campo_entrada" type="text" name="username" required>
+                        <label><b>Password</b></label>
+                        <input class = "campo_entrada" type="password" name="password" required>
+                    </div>
+
+                    <div class = "form-button-container">
+                        <button class="button" type="submit">Log in</button>
+                        <a class="button-like" th:href="@{/signUp}">Sign up</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <footer th:replace="~{base :: footer}"></footer>
+    </body>
+</html>

@@ -1,8 +1,8 @@
 package org.mapa.MAPA.persistence.repositories;
 
-import org.mapa.MAPA.domain.people.User;
 import org.springframework.stereotype.Repository;
+import org.mapa.MAPA.domain.surgery.Surgery;
 
 @Repository
-public interface UserRepository extends BaseRepository<User> {
+public interface SurgeryRepository extends BaseRepository<Surgery> {
 }

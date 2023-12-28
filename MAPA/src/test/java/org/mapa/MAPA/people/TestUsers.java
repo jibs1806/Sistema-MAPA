@@ -15,6 +15,6 @@ public class TestUsers {
     public void LuchoPersistenceTest(){
         Surgery surgery = new Surgery();
         MemberBasedFee memberBasedFee = new MemberBasedFee();
-
+        assertEquals(1, 1);
     }
 }

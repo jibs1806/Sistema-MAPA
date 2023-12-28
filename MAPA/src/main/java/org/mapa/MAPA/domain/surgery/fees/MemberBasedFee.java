@@ -5,18 +5,23 @@ import lombok.Getter;
 import lombok.Setter;
 import org.mapa.MAPA.domain.people.Person;
 import org.mapa.MAPA.domain.surgery.Surgery;
-import org.mapa.MAPA.persistence.Persistent;
+import org.mapa.MAPA.persistence.PKClasses.MemberBasedFeePK;
+
+import java.io.Serializable;
 
 @Entity
-@Table(name = "MemberBasedFee")
+@Table(name = "memberbasedfee")
 @Getter @Setter
-public class MemberBasedFee extends Persistent {
+@IdClass(MemberBasedFeePK.class)
+public class MemberBasedFee implements Serializable {
+    @Id
     @ManyToOne
-    @JoinColumn(name = "person_id", referencedColumnName = "id")
+    @JoinColumn(name = "person_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_person_id"))
     private Person person;
 
+    @Id
     @ManyToOne
-    @JoinColumn(name = "surgery_id", referencedColumnName = "id")
+    @JoinColumn(name = "surgery_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_surgery_id"))
     private Surgery surgery;
 
     @Column(name = "assignedAmount")

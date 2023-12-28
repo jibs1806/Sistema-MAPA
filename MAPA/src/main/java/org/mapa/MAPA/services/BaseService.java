@@ -1,11 +1,38 @@
 package org.mapa.MAPA.services;
 
+import jakarta.transaction.Transactional;
+import org.mapa.MAPA.persistence.repositories.BaseRepository;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-public interface BaseService<T> {
-    public List<T> findAll();
-    public T findById(Long id);
-    public void save(T entity);
-    public void update(Long id, T entity);
-    public void delete(T entity);
+@Service
+public abstract class BaseService<T> {
+    protected abstract BaseRepository<T> getRepository();
+
+    @Transactional
+    public List<T> findAll() {
+        return this.getRepository().findAll();
+    }
+
+    @Transactional
+    public T findById(Long id) {
+        return this.getRepository().findById(id).get();
+    }
+
+    @Transactional
+    public void save(T t) {
+        this.getRepository().save(t);
+    }
+
+    @Transactional
+    public void update(Long id, T t) {
+        this.getRepository().deleteById(id);
+        this.getRepository().save(t);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        this.getRepository().deleteById(id);
+    }
 }

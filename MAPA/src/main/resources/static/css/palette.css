@@ -1,0 +1,12 @@
+/*
+bg = background
+*/
+:root {
+    --primary-bg-color: #778899;
+    --secondary-bg-color: #094C72;
+    --text-color: white;
+    --button-bg-color: #113f67;
+    --button-text-color: white;
+    --button-hover-bg-color: white;
+    --button-hover-text-color: #113f67;
+}

@@ -10,7 +10,7 @@ import org.mapa.MAPA.persistence.Persistent;
 @Getter @Setter
 public class User extends Persistent{
     @Column(name = "username")
-    private String userName;
+    private String username;
 
     @Column(name = "password")
     private String password;
@@ -23,7 +23,7 @@ public class User extends Persistent{
     private SystemRole systemRole;
 
     public User(String userName, String password, String email, SystemRole systemRole) {
-        this.userName = userName;
+        this.username = userName;
         this.password = password;
         this.email = email;
         this.systemRole = systemRole;

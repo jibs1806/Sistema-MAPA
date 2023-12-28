@@ -14,7 +14,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 @Entity
-@Table()
+@Table(name = "surgery")
 @Getter @Setter
 public class Surgery extends Persistent {
 
@@ -61,11 +61,9 @@ public class Surgery extends Persistent {
     private List<Person> members;
 
     @OneToMany(mappedBy = "surgery")
-    @Transient
     private List<MemberBasedFee> memberBasedFees;
 
-    @ManyToOne
-    @JoinColumn(name = "chiefSurgeryFee_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "surgery")
     private MemberBasedFee chiefSurgeryFee;
 
     public Surgery(ParamSurgery paramSurgery) {

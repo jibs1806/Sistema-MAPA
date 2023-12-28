@@ -1,0 +1,123 @@
+a.button-like {
+    font-size: 100%;
+    min-width: 30vw;
+    display: inline-block;
+    padding: 3% 5%;
+    border: 1px solid var(--secondary-bg-color);
+    text: var(--button-text-color);
+
+    margin-bottom: 5%;
+    text-decoration: none;
+
+}
+
+.button{
+    font-size: 100%;
+    min-width: 30vw;
+    display: inline-block;
+    padding: 3% 5%;
+    border: 1px solid var(--secondary-bg-color);
+    background-color: var(--primary-bg-color);
+    color: var(--button-text-color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    transition-duration: 0.4s;
+}
+
+a.button-like:hover {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.button:hover{
+    background-color: #3498db;
+    color: #fff;
+}
+
+.login-container {
+    width: 40%;
+    height: auto;
+    margin-top: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    border: 1px solid black;
+}
+
+.picture-container{
+    width: 40%;
+    height: 40%;
+    display: flex;
+    margin-top: 0%;
+}
+
+.home-photo{
+    max-width: 100%;
+    height: auto;
+    margin-left: 10%;
+}
+
+.main-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: var(--primary-bg-color);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0);
+    border: 1px solid black;
+}
+
+.form-title-container {
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.form-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10vw;
+    color: var(--text-color);
+}
+
+label {
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Estilos para los campos de entrada */
+input[class="campo_entrada"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.form-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+
+body {
+    background-color: lightgrey;
+}
