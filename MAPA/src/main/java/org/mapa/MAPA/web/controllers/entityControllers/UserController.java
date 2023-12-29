@@ -1,6 +1,6 @@
 package org.mapa.MAPA.web.controllers.entityControllers;
 
-import org.mapa.MAPA.domain.people.User;
+import org.mapa.MAPA.domain.people.user.User;
 import org.mapa.MAPA.services.BaseService;
 import org.mapa.MAPA.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ public class UserController extends BaseController<User> {
 
     @Override
     protected BaseService<User> getService() {
-        return userService;
+        return this.userService;
     }
 
 }

@@ -1,4 +1,4 @@
-package org.mapa.MAPA.web.application;
+package org.mapa.MAPA.web.application.configuration;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

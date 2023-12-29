@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+//TODO
 @Service
 @Getter @Setter
 public class SurgeryPaymentAsigner {
@@ -34,7 +35,7 @@ public class SurgeryPaymentAsigner {
         MemberBasedFee asignedPayment = new MemberBasedFee(member);
 
         Double howMuch = practice.getRoleBasedFees().stream()
-                .filter(rolFee -> rolFee.getSurgeryRole() == member.getSurgeryRole())
+                .filter(rolFee -> rolFee.getSurgeryRole().equals(member.getSurgeryRole()))
                 .findFirst().get().getPercentage() * practice.getPrice();
 
         asignedPayment.setAssignedAmount(howMuch);

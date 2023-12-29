@@ -11,9 +11,9 @@ import org.mapa.MAPA.persistence.Persistent;
 @Setter
 public class HealthInsurance extends Persistent {
     @Column(name = "name")
-    private String name;
+    private SystemRole name;
 
-    public HealthInsurance(String name) {
+    public HealthInsurance(SystemRole name) {
         this.name = name;
     }
 

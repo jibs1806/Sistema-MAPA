@@ -1,4 +1,4 @@
-package org.mapa.MAPA.domain.people;
+package org.mapa.MAPA.domain.people.user;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -19,10 +19,9 @@ public class User extends Persistent{
     private String email;
 
     @Column(name = "systemRole")
-    @Enumerated(EnumType.STRING)
-    private SystemRole systemRole;
+    private String systemRole;
 
-    public User(String userName, String password, String email, SystemRole systemRole) {
+    public User(String userName, String password, String email, String systemRole) {
         this.username = userName;
         this.password = password;
         this.email = email;

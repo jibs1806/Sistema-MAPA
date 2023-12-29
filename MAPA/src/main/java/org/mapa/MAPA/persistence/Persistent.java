@@ -11,7 +11,7 @@ import java.io.Serializable;
 @MappedSuperclass
 public abstract class Persistent implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     private Long id;
 }

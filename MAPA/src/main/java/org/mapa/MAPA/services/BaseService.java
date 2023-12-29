@@ -5,6 +5,7 @@ import org.mapa.MAPA.persistence.repositories.BaseRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public abstract class BaseService<T> {
@@ -16,8 +17,8 @@ public abstract class BaseService<T> {
     }
 
     @Transactional
-    public T findById(Long id) {
-        return this.getRepository().findById(id).get();
+    public Optional<T> findById(Long id){
+        return this.getRepository().findById(id);
     }
 
     @Transactional

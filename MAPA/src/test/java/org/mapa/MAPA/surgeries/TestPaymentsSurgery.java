@@ -33,9 +33,9 @@ public class TestPaymentsSurgery {
     }
 
     public List<Person> createTestMembers(){
-        Person chiefSurgeon = new Person(null, "Lucho", SurgeryRole.CHIEF_SURGERY);
-        Person anesthesist = new Person(null, "Carlos", SurgeryRole.ANESTHESIST);
-        Person auxiliarySurgeon = new Person(null, "Juani", SurgeryRole.AUXILIARY_SURGEON);
+        Person chiefSurgeon = new Person(null, "Lucho", SurgeryRole.CHIEF_SURGERY.name());
+        Person anesthesist = new Person(null, "Carlos", SurgeryRole.ANESTHESIST.name());
+        Person auxiliarySurgeon = new Person(null, "Juani", SurgeryRole.AUXILIARY_SURGEON.name());
 
         List<Person> members = new ArrayList<>();
         members.add(anesthesist);
@@ -95,7 +95,7 @@ public class TestPaymentsSurgery {
     @Test
     @DisplayName("Auxiliary surgeon gets asigned the correct amount")
     public void asignAuxiliarySurgeonPayment(){
-        Person auxiliarySurgeon = new Person(null, "Lucho", SurgeryRole.AUXILIARY_SURGEON);
+        Person auxiliarySurgeon = new Person(null, "Lucho", SurgeryRole.AUXILIARY_SURGEON.name());
 
         MemberBasedFee auxiliarySurgeonFee = SurgeryPaymentAsigner.calculateMemberPayment(practice, auxiliarySurgeon);
 

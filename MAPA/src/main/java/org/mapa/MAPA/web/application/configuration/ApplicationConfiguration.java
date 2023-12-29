@@ -1,9 +1,8 @@
-package org.mapa.MAPA.web.application;
+package org.mapa.MAPA.web.application.configuration;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
@@ -14,8 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan(basePackages =
     {
         "org.mapa.MAPA.persistence.repositories",
-        "org.mapa.MAPA.web.controllers", "org.mapa.MAPA.services",
-
+        "org.mapa.MAPA.web.controllers", "org.mapa.MAPA.services"
     })
 public class ApplicationConfiguration {
 

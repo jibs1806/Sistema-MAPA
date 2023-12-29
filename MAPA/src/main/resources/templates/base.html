@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:fragment="head">
-        <meta charset="utf-8"/>
-        <title>Base Title</title>
+        <meta charset="utf-8" content="width=device-width"/>
+        <title>MAPA system</title>
         <link rel="stylesheet" th:href="@{/css/base.css}">
+        <link rel="stylesheet" th:href="@{/css/palette.css}">
     </head>
     <body>
+        <header th:fragment="header"><a th:href="@{/}">Home</a></header>
         <nav th:fragment="nav">
             <div>
                 <ul>
-                    <li><a th:href="@{/surgery}">Cirugias</a></li>
                     <li><a th:href="@{/aboutUs}">About us</a></li>
+                    <li><a th:href="@{/features}">Features</a></li>
                 </ul>
             </div>
         </nav>

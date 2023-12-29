@@ -3,6 +3,7 @@ package org.mapa.MAPA.domain.people;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.mapa.MAPA.domain.people.user.User;
 import org.mapa.MAPA.persistence.Persistent;
 
 @Entity
@@ -18,10 +19,9 @@ public class Person extends Persistent {
     private String name;
 
     @Column(name = "surgeryRole")
-    @Enumerated(EnumType.STRING)
-    private SurgeryRole surgeryRole;
+    private String surgeryRole;
 
-    public Person(User user, String name, SurgeryRole surgeryRole) {
+    public Person(User user, String name, String surgeryRole) {
         this.user = user;
         this.name = name;
         this.surgeryRole = surgeryRole;

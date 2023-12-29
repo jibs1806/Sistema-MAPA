@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 public abstract class BaseController<T> {
     protected abstract BaseService<T> getService();
@@ -17,7 +18,7 @@ public abstract class BaseController<T> {
     }
 
     @GetMapping("/{id}")
-    public T getById(@PathVariable Long id) {
+    public Optional<T> getById(@PathVariable Long id) {
         return this.getService().findById(id);
     }
 

@@ -4,9 +4,9 @@ import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mapa.MAPA.domain.people.SystemRole;
-import org.mapa.MAPA.domain.people.User;
+import org.mapa.MAPA.domain.people.user.User;
 import org.mapa.MAPA.services.UserService;
-import org.mapa.MAPA.web.application.TestConfiguration;
+import org.mapa.MAPA.web.application.configuration.TestConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -29,7 +29,7 @@ class ApplicationTests {
 	@Test
 	@DisplayName("checking user persistence")
 	void checkingUserPersistence(){
-		User user = new User("Lucho", "Gina0802", "a@e.com", SystemRole.EMPLOYEE);
+		User user = new User("Lucho", "Gina0802", "a@e.com", SystemRole.EMPLOYEE.name());
 		userService.save(user);
 
 		List<User> users = userService.findAll();

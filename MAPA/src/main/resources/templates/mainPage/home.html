@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" >
     <head>
-        <meta charset="utf-8"/>
+        <meta charset="utf-8" content="width=device-width"/>
         <title>MAPA system</title>
+        <link rel="stylesheet" th:href="@{/css/base.css}">
         <link rel="stylesheet" th:href="@{/css/palette.css}">
         <link rel="stylesheet" th:href="@{/css/home.css}">
-        <link rel="stylesheet" th:href="@{/css/base.css}">
     </head>
+
     <body>
-        <header>Home</header>
+        <header th:replace="~{base :: header}"></header>
+        <nav th:replace="~{base :: nav}"></nav>
+
         <div class="main-container">
 
             <img th:src="@{/images/photoHome.jpg}" class="home-photo">
@@ -22,16 +25,18 @@
 
                     <div class ="form-input-container">
                         <label><b>Username</b></label>
-                        <input class = "campo_entrada" type="text" name="username" required>
+                        <input class = "campo_entrada" type="text" name="username">
                         <label><b>Password</b></label>
-                        <input class = "campo_entrada" type="password" name="password" required>
+                        <input class = "campo_entrada" type="password" name="password">
                     </div>
 
-                    <div class = "form-button-container">
-                        <button class="button" type="submit">Log in</button>
-                        <a class="button-like" th:href="@{/signUp}">Sign up</a>
+                    <div class="button-container">
+                        <button class="button" method="POST" type="submit">Log in</button>
                     </div>
                 </form>
+                <div class="button-container">
+                    <button class="button" method="GET" th:href="@{/signUp}">Sign up</button>
+                </div>
             </div>
         </div>
 
