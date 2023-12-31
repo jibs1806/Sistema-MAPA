@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>MAPA system</title>
+    <link rel="stylesheet" th:href="@{/css/palette.css}">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/person/addPerson.css}">
+</head>
+
+<body>
+    <nav th:replace="~{person/personMenu :: person-nav}"></nav>
+    <div class="form-container">
+        <form th:action="@{/doctor/add}" method="POST">
+
+            <!-- Combo Box with Enum Options -->
+            <label for="surgRole">Select a surgery role:</label>
+            <select id="surgRole" name="surgRole" required>
+                <option th:each="surgeryRole : ${surgeryRoles}" th:value="${surgeryRole}" th:text="${surgeryRole}"></option>
+            </select>
+            <br>
+
+            <!-- Submit Button -->
+            <input type="submit" value="Agregar persona">
+        </form>
+    </div>
+    <footer th:replace="~{base :: footer}"></footer>
+</body>
+</html>

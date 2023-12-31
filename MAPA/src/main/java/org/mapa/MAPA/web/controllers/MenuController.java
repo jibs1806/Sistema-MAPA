@@ -8,7 +8,7 @@ public class MenuController {
 
     @GetMapping("/cirugias")
     public String showSurgeriesMenu(){
-        String html = "menu/surgeryMenu";
+        String html = "surgery/surgeryMenu";
         return html;
     }
 
@@ -18,15 +18,15 @@ public class MenuController {
         return html;
     }
 
-    @GetMapping("/medicos")
+    @GetMapping("/doctor")
     public String showPersonMenu(){
-        String html = "menu/personMenu";
+        String html = "person/personMenu";
         return html;
     }
 
     @GetMapping("/centros")
     public String showCentresMenu(){
-        String html = "menu/centreMenu";
+        String html = "centre/centreMenu";
         return html;
     }
 }

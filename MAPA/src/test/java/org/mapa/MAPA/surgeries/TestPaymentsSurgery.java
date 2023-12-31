@@ -12,7 +12,7 @@ import org.mapa.MAPA.domain.surgery.fees.MemberBasedFee;
 import org.mapa.MAPA.domain.surgery.fees.RoleBasedFee;
 import org.mapa.MAPA.domain.surgery.practice.ParamPractice;
 import org.mapa.MAPA.domain.surgery.practice.Practice;
-import org.mapa.MAPA.services.SurgeryPaymentAsigner;
+import org.mapa.MAPA.services.SurgeryService;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -33,12 +33,12 @@ public class TestPaymentsSurgery {
     }
 
     public List<Person> createTestMembers(){
-        Person chiefSurgeon = new Person(null, "Lucho", SurgeryRole.CHIEF_SURGERY.name());
-        Person anesthesist = new Person(null, "Carlos", SurgeryRole.ANESTHESIST.name());
-        Person auxiliarySurgeon = new Person(null, "Juani", SurgeryRole.AUXILIARY_SURGEON.name());
+        Person chiefSurgeon = new Person(null, "Lucho", SurgeryRole.CHIEF_SURGERY);
+        Person anesthetist = new Person(null, "Carlos", SurgeryRole.ANESTHESIST);
+        Person auxiliarySurgeon = new Person(null, "Juani", SurgeryRole.AUXILIARY_SURGEON);
 
         List<Person> members = new ArrayList<>();
-        members.add(anesthesist);
+        members.add(anesthetist);
         members.add(auxiliarySurgeon);
 
         return members;
@@ -85,34 +85,34 @@ public class TestPaymentsSurgery {
     @DisplayName("The chief of surgery gets asigned the remaining amount")
     public void chiefSurgeryPaymentAsignment(){
 
-        SurgeryPaymentAsigner.calculatePayments(surgery);
+        SurgeryService.assignPayments(surgery);
 
-        Double chiefSurgeryAsigned = surgery.getChiefSurgeryFee().getAssignedAmount();
+        Double chiefSurgeryAssigned = surgery.getChiefSurgeryFee().getAssignedAmount();
 
-        assertEquals(50.0, chiefSurgeryAsigned);
+        assertEquals(50.0, chiefSurgeryAssigned);
     }
 
     @Test
     @DisplayName("Auxiliary surgeon gets asigned the correct amount")
     public void asignAuxiliarySurgeonPayment(){
-        Person auxiliarySurgeon = new Person(null, "Lucho", SurgeryRole.AUXILIARY_SURGEON.name());
+        Person auxiliarySurgeon = new Person(null, "Lucho", SurgeryRole.AUXILIARY_SURGEON);
 
-        MemberBasedFee auxiliarySurgeonFee = SurgeryPaymentAsigner.calculateMemberPayment(practice, auxiliarySurgeon);
+        MemberBasedFee auxiliarySurgeonFee = SurgeryService.assignMemberPayment(practice, auxiliarySurgeon);
 
-        Double auxiliarySurgeonAsigned = auxiliarySurgeonFee.getAssignedAmount();
+        Double auxiliarySurgeonAssigned = auxiliarySurgeonFee.getAssignedAmount();
 
-        assertEquals(20.0, auxiliarySurgeonAsigned);
+        assertEquals(20.0, auxiliarySurgeonAssigned);
     }
 
     @Test
     @DisplayName("All members get asigned the correct amount")
     public void asignAllMemberPayments(){
-        List<MemberBasedFee> memberBasedFees = SurgeryPaymentAsigner.calculateAllMemberPayments(practice, members);
+        List<MemberBasedFee> memberBasedFees = SurgeryService.assignAllMemberPayments(practice, members);
 
-        Double anesthesistAsigned = memberBasedFees.get(0).getAssignedAmount();
-        Double auxiliarySurgeonAsigned = memberBasedFees.get(1).getAssignedAmount();
+        Double anesthetistAssigned = memberBasedFees.get(0).getAssignedAmount();
+        Double auxiliarySurgeonAssigned = memberBasedFees.get(1).getAssignedAmount();
 
-        assertEquals(30.0, anesthesistAsigned);
-        assertEquals(20.0, auxiliarySurgeonAsigned);
+        assertEquals(30.0, anesthetistAssigned);
+        assertEquals(20.0, auxiliarySurgeonAssigned);
     }
 }

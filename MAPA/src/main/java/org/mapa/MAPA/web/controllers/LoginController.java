@@ -1,11 +1,15 @@
 package org.mapa.MAPA.web.controllers;
 
 
+import ch.qos.logback.classic.sift.ContextBasedDiscriminator;
+import jakarta.servlet.http.HttpServletRequest;
+import jdk.jfr.Frequency;
 import org.mapa.MAPA.domain.people.user.User;
 import org.mapa.MAPA.services.UserService;
 import org.mapa.MAPA.services.exception.user.IncorrectPasswordException;
 import org.mapa.MAPA.services.exception.user.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpCookie;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.servlet.function.ServerResponse.Context;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Optional;
@@ -24,9 +29,10 @@ public class LoginController {
     private UserService userService;
 
     @PostMapping("/login")
-    public RedirectView verifyUserCredentials(
-            @RequestParam("username")String username,
-            @RequestParam("password")String password){
+    public RedirectView verifyUserCredentials(HttpServletRequest request){
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
         Optional<User> user = this.userService.findByUsername(username);
 
         if(user.isEmpty())
@@ -34,6 +40,7 @@ public class LoginController {
 
         if(!this.userService.isPasswordCorrect(user.get(), password))
             throw new IncorrectPasswordException();
+
 
         String url = "menu";
         return new RedirectView(url, true);

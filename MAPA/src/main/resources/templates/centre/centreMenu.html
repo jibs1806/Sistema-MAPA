@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>MAPA system</title>
+    <link rel="stylesheet" th:href="@{/css/palette.css}">
+    <link rel="stylesheet" th:href="@{/css/menu.css}">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+</head>
+<body>
+<nav>
+    <div>
+        <ul>
+            <li><a th:href="@{/templates/surgery}">Menu:</a></li>
+            <li><a th:href="@{/cirugias}"> Cirugias</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="columns-container">
+    <div class="column">
+        <button>Actualizar estado</button>
+        <button>Cargar cirugias</button>
+    </div>
+
+    <div class="column">
+        <button>Funcion?</button>
+        <button>Otra funcion</button>
+    </div>
+
+</div>
+
+<footer th:replace="~{base :: footer}"></footer>
+
+</body>
+</html>

@@ -8,22 +8,22 @@
     <link rel="stylesheet" th:href="@{/css/base.css}">
 </head>
 <body>
-<nav>
-    <div>
-        <ul>
-            <li><a th:href="@{/cirugias}">Home: Cirugias</a></li>
-        </ul>
-    </div>
-</nav>
+    <nav th:fragment="person-nav">
+        <div>
+            <ul>
+                <li><a th:href="@{/templates/surgery}">Menu:</a></li>
+                <li><a th:href="@{/doctor}"> Doctores</a></li>
+            </ul>
+        </div>
+    </nav>
 <div class="columns-container">
     <div class="column">
-        <button>Actualizar estado</button>
-        <button>Cargar cirugias</button>
+        <a class="button-like" th:href="@{/doctor/add}">Agregar medico</a>
     </div>
 
     <div class="column">
-        <button>Funcion?</button>
-        <button>Otra funcion</button>
+        <a class="button-like" th:href="@{/cirugias/actualizar}">Buscar cirugia</a>
+        <a class="button-like" th:href="@{/cirugias/actualizar}">Funcion extra</a>
     </div>
 
 </div>

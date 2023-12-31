@@ -1,0 +1,35 @@
+.form-container {
+    width: 80%;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.form-title-container {
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 20px; /* Espacio inferior para separar el título de los campos */
+}
+
+.form-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre elementos */
+}
+
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
