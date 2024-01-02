@@ -29,7 +29,7 @@ class ApplicationTests {
 	@Test
 	@DisplayName("checking user persistence")
 	void checkingUserPersistence(){
-		User user = new User("Lucho", "Gina0802", "a@e.com", SystemRole.EMPLOYEE.name());
+		User user = new User("Lucho", "Gina0802", "a@e.com", SystemRole.EMPLOYEE);
 		userService.save(user);
 
 		List<User> users = userService.findAll();

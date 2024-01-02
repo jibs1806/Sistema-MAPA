@@ -13,12 +13,14 @@
     <div class="form-container">
         <form th:action="@{/doctor/add}" method="POST">
 
-            <!-- Combo Box with Enum Options -->
+            <labe for></labe>
+
             <label for="surgRole">Select a surgery role:</label>
             <select id="surgRole" name="surgRole" required>
                 <option th:each="surgeryRole : ${surgeryRoles}" th:value="${surgeryRole}" th:text="${surgeryRole}"></option>
             </select>
             <br>
+
 
             <!-- Submit Button -->
             <input type="submit" value="Agregar persona">

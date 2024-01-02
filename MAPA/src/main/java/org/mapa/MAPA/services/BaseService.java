@@ -2,8 +2,8 @@ package org.mapa.MAPA.services;
 
 import jakarta.transaction.Transactional;
 import org.mapa.MAPA.persistence.repositories.BaseRepository;
+import org.mapa.MAPA.utils.ObjectCopyUtil;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -27,9 +27,13 @@ public abstract class BaseService<T> {
     }
 
     @Transactional
-    public void update(Long id, T t) {
-        this.getRepository().deleteById(id);
-        this.getRepository().save(t);
+    public void update(Long id, T updatedT) {
+        T existingT = this.findById(id).get();
+
+        ObjectCopyUtil<T> objectCopyUtil = new ObjectCopyUtil();
+        objectCopyUtil.copyNonNullProperties(updatedT, existingT);
+
+        this.getRepository().save(existingT);
     }
 
     @Transactional

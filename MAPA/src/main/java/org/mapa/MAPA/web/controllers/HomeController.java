@@ -15,7 +15,7 @@ public class HomeController {
 
     @GetMapping("/menu")
     public String showHome(){
-        String html = "menu/mainMenu";
+        String html = "mainPage/mainMenu";
         return html;
     }
 }

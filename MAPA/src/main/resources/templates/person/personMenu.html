@@ -11,24 +11,18 @@
     <nav th:fragment="person-nav">
         <div>
             <ul>
-                <li><a th:href="@{/templates/surgery}">Menu:</a></li>
+                <li><a th:href="@{/menu}">Menu:</a></li>
                 <li><a th:href="@{/doctor}"> Doctores</a></li>
             </ul>
         </div>
     </nav>
-<div class="columns-container">
-    <div class="column">
+    <div class="columns-container">
         <a class="button-like" th:href="@{/doctor/add}">Agregar medico</a>
-    </div>
-
-    <div class="column">
         <a class="button-like" th:href="@{/cirugias/actualizar}">Buscar cirugia</a>
         <a class="button-like" th:href="@{/cirugias/actualizar}">Funcion extra</a>
     </div>
 
-</div>
-
-<footer th:replace="~{base :: footer}"></footer>
+    <footer th:replace="~{base :: footer}"></footer>
 
 </body>
 </html>

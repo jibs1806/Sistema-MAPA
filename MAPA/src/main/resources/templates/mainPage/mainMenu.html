@@ -11,21 +11,16 @@
     <nav>
         <div>
             <ul>
-                <li><a th:href="@{/templates/surgery}">Menu</a></li>
+                <li><a th:href="@{/menu}">Menu</a></li>
             </ul>
         </div>
     </nav>
     <div class="columns-container">
-        <div class="column">
-            <a class="button-like" th:href="@{/cirugias}">Cirugias</a>
-            <a class="button-like" th:href="@{/doctor}">Medicos</a>
-        </div>
-
-        <div class="column">
-            <a class="button-like" th:href="@{/cirugias}">Practicas</a>
-            <a class="button-like" th:href="@{/cirugias}">Centros medicos</a>
-        </div>
-
+        <a class="button-like" th:href="@{/cirugias}">Cirugias</a>
+        <a class="button-like" th:href="@{/doctor}">Medicos</a>
+        <a class="button-like" th:href="@{/cirugias}">Practicas</a>
+        <a class="button-like" th:href="@{/cirugias}">Centros medicos</a>
+        <a class="button-like" th:href="@{/cirugias}">Obras sociales</a>
     </div>
 
     <footer th:replace="~{base :: footer}"></footer>

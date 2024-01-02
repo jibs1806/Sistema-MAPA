@@ -3,6 +3,7 @@ package org.mapa.MAPA.domain.people.user;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.mapa.MAPA.domain.people.SystemRole;
 import org.mapa.MAPA.persistence.Persistent;
 
 @Entity
@@ -19,9 +20,9 @@ public class User extends Persistent{
     private String email;
 
     @Column(name = "systemRole")
-    private String systemRole;
+    private SystemRole systemRole;
 
-    public User(String userName, String password, String email, String systemRole) {
+    public User(String userName, String password, String email, SystemRole systemRole) {
         this.username = userName;
         this.password = password;
         this.email = email;

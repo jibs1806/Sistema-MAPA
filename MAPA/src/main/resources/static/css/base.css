@@ -5,19 +5,41 @@ body {
     background-color: lightgrey;
 }
 
-a{
+a a:visited{
     color: white;
     text-decoration: none;
-    transition: color 0.3s, border-bottom 0.3s;
 }
 
 a:hover{
-    color:white;
-    font-weight: bold;
+    text: bold;
 }
 
-a:visited{
-    color: white;
+
+button, a.button-like{
+    font-size: 150%;
+    text-decoration: none;
+    width: 40%;
+    height: 5%;
+    margin: 1%;
+    padding: 3%;
+    border: 1px solid var(--secondary-bg-color);
+    background-color: var(--primary-bg-color);
+    color: var(--button-text-color);
+    border-radius: 5px;
+    cursor: pointer;
+
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    transition-duration: 0.4s;
+}
+
+button:hover, a.button-like:hover{
+    background-color: #3498db;
+    color: #fff;
+}
+
+a.button-like:visited{
+    color: var(--button-text-color);
 }
 
 
