@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mapa.MAPA.domain.people.SystemRole;
 import org.mapa.MAPA.domain.people.user.User;
-import org.mapa.MAPA.services.UserService;
+import org.mapa.MAPA.services.people.UserService;
 import org.mapa.MAPA.web.application.configuration.TestConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

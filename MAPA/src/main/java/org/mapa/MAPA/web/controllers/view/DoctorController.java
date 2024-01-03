@@ -1,9 +1,9 @@
-package org.mapa.MAPA.web.controllers;
+package org.mapa.MAPA.web.controllers.view;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.mapa.MAPA.domain.people.Person;
 import org.mapa.MAPA.domain.people.SurgeryRole;
-import org.mapa.MAPA.persistence.repositories.PersonRepository;
+import org.mapa.MAPA.persistence.repositories.people.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

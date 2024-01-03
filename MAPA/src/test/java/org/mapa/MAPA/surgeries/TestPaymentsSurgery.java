@@ -12,7 +12,7 @@ import org.mapa.MAPA.domain.surgery.fees.MemberBasedFee;
 import org.mapa.MAPA.domain.surgery.fees.RoleBasedFee;
 import org.mapa.MAPA.domain.surgery.practice.ParamPractice;
 import org.mapa.MAPA.domain.surgery.practice.Practice;
-import org.mapa.MAPA.services.SurgeryService;
+import org.mapa.MAPA.services.surgery.SurgeryService;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayList;

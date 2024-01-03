@@ -1,4 +1,4 @@
-package org.mapa.MAPA.web.controllers;
+package org.mapa.MAPA.web.controllers.view;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;

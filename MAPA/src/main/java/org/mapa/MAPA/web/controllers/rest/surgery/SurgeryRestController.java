@@ -1,8 +1,9 @@
-package org.mapa.MAPA.web.controllers.restEntities;
+package org.mapa.MAPA.web.controllers.rest.surgery;
 
 import org.mapa.MAPA.domain.surgery.Surgery;
 import org.mapa.MAPA.services.BaseService;
-import org.mapa.MAPA.services.SurgeryService;
+import org.mapa.MAPA.services.surgery.SurgeryService;
+import org.mapa.MAPA.web.controllers.rest.BaseRestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

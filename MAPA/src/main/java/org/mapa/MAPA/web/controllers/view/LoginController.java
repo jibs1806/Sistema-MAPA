@@ -1,23 +1,18 @@
-package org.mapa.MAPA.web.controllers;
+package org.mapa.MAPA.web.controllers.view;
 
 
-import ch.qos.logback.classic.sift.ContextBasedDiscriminator;
 import jakarta.servlet.http.HttpServletRequest;
-import jdk.jfr.Frequency;
 import org.mapa.MAPA.domain.people.user.User;
-import org.mapa.MAPA.services.UserService;
+import org.mapa.MAPA.services.people.UserService;
 import org.mapa.MAPA.services.exception.user.IncorrectPasswordException;
 import org.mapa.MAPA.services.exception.user.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpCookie;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.servlet.function.ServerResponse.Context;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Optional;

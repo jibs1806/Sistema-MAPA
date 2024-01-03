@@ -1,6 +1,7 @@
-package org.mapa.MAPA.persistence.repositories;
+package org.mapa.MAPA.persistence.repositories.people;
 
 import org.mapa.MAPA.domain.people.user.User;
+import org.mapa.MAPA.persistence.repositories.BaseRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;

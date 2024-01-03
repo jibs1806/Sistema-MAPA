@@ -1,14 +1,15 @@
-package org.mapa.MAPA.services;
+package org.mapa.MAPA.services.surgery;
 
 import org.mapa.MAPA.domain.people.HealthInsurance;
 import org.mapa.MAPA.persistence.repositories.BaseRepository;
-import org.mapa.MAPA.persistence.repositories.HealthInsuranceRepository;
+import org.mapa.MAPA.persistence.repositories.surgery.HealthInsuranceRepository;
+import org.mapa.MAPA.services.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 @Service
-public class HealthInsuranceService extends BaseService<HealthInsurance>{
+public class HealthInsuranceService extends BaseService<HealthInsurance> {
     @Autowired
     private HealthInsuranceRepository healthInsuranceRepository;
 

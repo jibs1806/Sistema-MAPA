@@ -1,10 +1,11 @@
-package org.mapa.MAPA.web.controllers.restEntities;
+package org.mapa.MAPA.web.controllers.rest.people;
 
 
 
 import org.mapa.MAPA.domain.people.user.User;
 import org.mapa.MAPA.services.BaseService;
-import org.mapa.MAPA.services.UserService;
+import org.mapa.MAPA.services.people.UserService;
+import org.mapa.MAPA.web.controllers.rest.BaseRestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

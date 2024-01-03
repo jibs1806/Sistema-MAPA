@@ -1,9 +1,9 @@
-package org.mapa.MAPA.services;
+package org.mapa.MAPA.services.people;
 
 import org.mapa.MAPA.domain.people.user.User;
 import org.mapa.MAPA.persistence.repositories.BaseRepository;
-import org.mapa.MAPA.persistence.repositories.UserRepository;
-import org.mapa.MAPA.services.exception.user.UserNotFoundException;
+import org.mapa.MAPA.persistence.repositories.people.UserRepository;
+import org.mapa.MAPA.services.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

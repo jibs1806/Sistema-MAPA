@@ -20,6 +20,7 @@ public class User extends Persistent{
     private String email;
 
     @Column(name = "systemRole")
+    @Enumerated(EnumType.STRING)
     private SystemRole systemRole;
 
     public User(String userName, String password, String email, SystemRole systemRole) {
