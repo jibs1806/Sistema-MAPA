@@ -1,12 +1,12 @@
 package org.mapa.MAPA.domain.surgery.practice;
 
 import jakarta.persistence.*;
-import org.mapa.MAPA.domain.people.HealthInsurance;
-import org.mapa.MAPA.domain.surgery.Centre;
-import org.mapa.MAPA.domain.surgery.Specialty;
-import org.mapa.MAPA.domain.surgery.fees.RoleBasedFee;
 import lombok.Getter;
 import lombok.Setter;
+import org.mapa.MAPA.domain.agents.HealthInsurance;
+import org.mapa.MAPA.domain.surgery.fees.RoleBasedFee;
+import org.mapa.MAPA.domain.surgery.surgeryDetail.Centre;
+import org.mapa.MAPA.domain.surgery.surgeryDetail.Specialty;
 import org.mapa.MAPA.persistence.Persistent;
 
 import java.util.List;

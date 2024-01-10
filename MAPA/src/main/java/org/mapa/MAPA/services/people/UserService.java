@@ -1,6 +1,6 @@
 package org.mapa.MAPA.services.people;
 
-import org.mapa.MAPA.domain.people.user.User;
+import org.mapa.MAPA.domain.agents.users.User;
 import org.mapa.MAPA.persistence.repositories.BaseRepository;
 import org.mapa.MAPA.persistence.repositories.people.UserRepository;
 import org.mapa.MAPA.services.BaseService;

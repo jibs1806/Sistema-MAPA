@@ -1,6 +1,6 @@
 package org.mapa.MAPA.persistence.repositories.surgery;
 
-import org.mapa.MAPA.domain.surgery.Centre;
+import org.mapa.MAPA.domain.surgery.surgeryDetail.Centre;
 import org.mapa.MAPA.persistence.repositories.BaseRepository;
 import org.springframework.stereotype.Repository;
 

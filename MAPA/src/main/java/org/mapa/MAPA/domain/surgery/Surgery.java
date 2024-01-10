@@ -1,16 +1,14 @@
 package org.mapa.MAPA.domain.surgery;
 
 import jakarta.persistence.*;
-import org.mapa.MAPA.domain.people.HealthInsurance;
-import org.mapa.MAPA.domain.people.Person;
-import org.mapa.MAPA.domain.surgery.fees.MemberBasedFee;
-import org.mapa.MAPA.domain.surgery.practice.Practice;
 import lombok.Getter;
 import lombok.Setter;
+import org.mapa.MAPA.domain.agents.users.people.Specialist;
+import org.mapa.MAPA.domain.surgery.fees.MemberBasedFee;
+import org.mapa.MAPA.domain.surgery.surgeryDetail.Payment;
+import org.mapa.MAPA.domain.surgery.surgeryDetail.SurgeryDetail;
 import org.mapa.MAPA.persistence.Persistent;
-import org.mapa.MAPA.persistence.converter.ZonedDateTimeConverter;
 
-import java.time.ZonedDateTime;
 import java.util.List;
 
 @Entity
@@ -18,39 +16,11 @@ import java.util.List;
 @Getter @Setter
 public class Surgery extends Persistent {
 
-    @Column(name = "detail")
-    private String detail;
+    @Embedded
+    private SurgeryDetail surgeryDetail;
 
-    @ManyToOne
-    @JoinColumn(name = "practice_id", referencedColumnName = "id")
-    private Practice practice;
-
-    @ManyToOne
-    @JoinColumn(name = "centre_id", referencedColumnName = "id")
-    private Centre centre;
-
-    @ManyToOne
-    @JoinColumn(name = "healthInsurance_id", referencedColumnName = "id")
-    private HealthInsurance healthInsurance;
-
-    @ManyToOne
-    @JoinColumn(name = "specialty_id", referencedColumnName = "id")
-    private Specialty specialty;
-
-    @Column(name = "price")
-    private Double price;
-
-    @Convert(converter = ZonedDateTimeConverter.class)
-    @Column(name = "paymentDate")
-    private ZonedDateTime paymentDate;
-
-    @Convert(converter = ZonedDateTimeConverter.class)
-    @Column(name = "completionDate")
-    private ZonedDateTime completionDate;
-
-    @Column(name = "paymentStatus")
-    @Enumerated(EnumType.STRING)
-    private PaymentStatus paymentStatus;
+    @Embedded
+    private Payment payment;
 
     @ManyToMany
     @JoinTable(
@@ -58,26 +28,25 @@ public class Surgery extends Persistent {
             joinColumns = @JoinColumn(name = "surgery_id"),
             inverseJoinColumns = @JoinColumn(name = "person_id")
     )
-    private List<Person> members;
+    private List<Specialist> members;
 
-    @OneToMany(mappedBy = "surgery")
+    @OneToMany
     private List<MemberBasedFee> memberBasedFees;
 
-    @OneToOne(mappedBy = "surgery")
-    private MemberBasedFee chiefSurgeryFee;
+    @ManyToOne
+    @JoinColumn(name = "chiefSurgery_id", referencedColumnName = "id")
+    private Specialist chiefSurgery;
+
+    @Column(name = "chiefSurgeryFee")
+    private Double chiefSurgeryFee;
 
     public Surgery(ParamSurgery paramSurgery) {
-        this.practice = paramSurgery.getPractice();
-        this.centre = this.practice.getCentre();
-        this.specialty = this.practice.getSpecialty();
-        this.healthInsurance = this.practice.getHealthInsurance();
-        this.price = paramSurgery.getPractice().getPrice();
-        this.completionDate = paramSurgery.getCompletionDate();
-        this.paymentStatus = PaymentStatus.PENDING;
+        this.surgeryDetail = paramSurgery.getSurgeryDetail();
+        this.payment = paramSurgery.getPayment();
         this.members = paramSurgery.getMembers();
         this.memberBasedFees = paramSurgery.getMemberBasedFees();
-        this.detail = paramSurgery.getDetail();
-        this.chiefSurgeryFee = new MemberBasedFee(paramSurgery.getChiefSurgery());
+        this.chiefSurgeryFee = paramSurgery.getChiefSurgeryFee();
+        this.chiefSurgery = paramSurgery.getChiefSurgery();
     }
 
     public Surgery() {

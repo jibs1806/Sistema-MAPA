@@ -1,8 +1,8 @@
 package org.mapa.MAPA.web.controllers.view;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.mapa.MAPA.domain.people.Person;
-import org.mapa.MAPA.domain.people.SurgeryRole;
+import org.mapa.MAPA.domain.agents.users.people.Person;
+import org.mapa.MAPA.domain.agents.roles.SurgeryRole;
 import org.mapa.MAPA.persistence.repositories.people.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +28,7 @@ public class DoctorController {
 
     @PostMapping("/doctor/add")
     public String addDoctor(HttpServletRequest request){
+        /*
         Person newPerson = new Person();
         String name = request.getParameter("name");
         String surgeryRole = request.getParameter("name");
@@ -39,7 +40,7 @@ public class DoctorController {
         // newPerson.setBoss(boss);
 
         this.personRepository.save(newPerson);
-
+        */
         return "hola";
     }
 }

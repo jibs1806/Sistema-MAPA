@@ -1,8 +1,11 @@
-package org.mapa.MAPA.domain.people;
+package org.mapa.MAPA.domain.agents;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.mapa.MAPA.domain.agents.roles.SystemRole;
 import org.mapa.MAPA.persistence.Persistent;
 
 @Entity

@@ -1,9 +1,9 @@
 package org.mapa.MAPA.domain.surgery.fees;
 
 import jakarta.persistence.*;
-import org.mapa.MAPA.domain.people.SurgeryRole;
 import lombok.Getter;
 import lombok.Setter;
+import org.mapa.MAPA.domain.agents.roles.SurgeryRole;
 import org.mapa.MAPA.domain.surgery.practice.Practice;
 import org.mapa.MAPA.persistence.PKClasses.RoleBasedFeePK;
 

@@ -1,7 +1,7 @@
 package org.mapa.MAPA.web.controllers.rest.people;
 
 
-import org.mapa.MAPA.domain.people.Person;
+import org.mapa.MAPA.domain.agents.users.people.Person;
 import org.mapa.MAPA.services.BaseService;
 import org.mapa.MAPA.services.people.PersonService;
 import org.mapa.MAPA.web.controllers.rest.BaseRestController;

@@ -1,8 +1,5 @@
 package org.mapa.MAPA.persistence.PKClasses;
 
-import org.mapa.MAPA.domain.people.SurgeryRole;
-import org.mapa.MAPA.domain.surgery.practice.Practice;
-
 import java.io.Serializable;
 import java.util.Objects;
 

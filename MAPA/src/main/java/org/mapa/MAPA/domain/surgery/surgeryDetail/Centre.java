@@ -1,4 +1,4 @@
-package org.mapa.MAPA.domain.surgery;
+package org.mapa.MAPA.domain.surgery.surgeryDetail;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

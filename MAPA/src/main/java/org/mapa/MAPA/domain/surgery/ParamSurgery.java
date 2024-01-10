@@ -1,25 +1,33 @@
 package org.mapa.MAPA.domain.surgery;
 
-import jakarta.persistence.Transient;
-import org.mapa.MAPA.domain.people.Person;
-import org.mapa.MAPA.domain.surgery.fees.MemberBasedFee;
-import org.mapa.MAPA.domain.surgery.practice.Practice;
+
 import lombok.Getter;
 import lombok.Setter;
+import org.mapa.MAPA.domain.agents.users.people.Specialist;
+import org.mapa.MAPA.domain.surgery.fees.MemberBasedFee;
+import org.mapa.MAPA.domain.surgery.surgeryDetail.Payment;
+import org.mapa.MAPA.domain.surgery.surgeryDetail.SurgeryDetail;
 
-import java.time.ZonedDateTime;
 import java.util.List;
 
 @Getter @Setter
 public class ParamSurgery {
-    private String detail;
-    private Practice practice;
-    private ZonedDateTime completionDate;
-    private List<Person> members;
+
+    private SurgeryDetail surgeryDetail;
+
+    private Payment payment;
+
+    private List<Specialist> members;
+
+
     private List<MemberBasedFee> memberBasedFees;
-    private Person chiefSurgery;
+
+    private Specialist chiefSurgery;
+
+    private Double chiefSurgeryFee;
 
     public ParamSurgery(){
-        
+        this.payment = new Payment();
+        this.surgeryDetail = new SurgeryDetail();
     }
 }

@@ -1,6 +1,6 @@
 package org.mapa.MAPA.web.controllers.rest.surgery;
 
-import org.mapa.MAPA.domain.surgery.Centre;
+import org.mapa.MAPA.domain.surgery.surgeryDetail.Centre;
 import org.mapa.MAPA.services.BaseService;
 import org.mapa.MAPA.services.surgery.CentreService;
 import org.mapa.MAPA.web.controllers.rest.BaseRestController;

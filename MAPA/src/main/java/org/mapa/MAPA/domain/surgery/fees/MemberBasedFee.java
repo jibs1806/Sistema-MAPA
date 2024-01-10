@@ -3,34 +3,30 @@ package org.mapa.MAPA.domain.surgery.fees;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.mapa.MAPA.domain.people.Person;
-import org.mapa.MAPA.domain.surgery.Surgery;
-import org.mapa.MAPA.persistence.PKClasses.MemberBasedFeePK;
+import org.mapa.MAPA.domain.agents.users.people.Specialist;
+import org.mapa.MAPA.persistence.Persistent;
+import org.mapa.MAPA.persistence.converter.ZonedDateTimeConverter;
 
-import java.io.Serializable;
+import java.time.ZonedDateTime;
 
 @Entity
 @Table(name = "memberbasedfee")
 @Getter @Setter
-@IdClass(MemberBasedFeePK.class)
-public class MemberBasedFee implements Serializable {
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "person_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_person_id"))
-    private Person person;
+public class MemberBasedFee extends Persistent {
 
-    @Id
     @ManyToOne
-    @JoinColumn(name = "surgery_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_surgery_id"))
-    private Surgery surgery;
+    @JoinColumn(name = "specialist_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_specialist_id"))
+    private Specialist specialist;
 
     @Column(name = "assignedAmount")
     private Double assignedAmount;
 
+    @Convert(converter = ZonedDateTimeConverter.class)
+    @Column(name = "completionDate")
+    private ZonedDateTime completionDate;
 
-
-    public MemberBasedFee(Person person) {
-        this.person = person;
+    public MemberBasedFee(Specialist specialist) {
+        this.specialist = specialist;
     }
 
     public MemberBasedFee() {

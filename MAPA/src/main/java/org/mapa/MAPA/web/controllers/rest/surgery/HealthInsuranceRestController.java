@@ -1,6 +1,6 @@
 package org.mapa.MAPA.web.controllers.rest.surgery;
 
-import org.mapa.MAPA.domain.people.HealthInsurance;
+import org.mapa.MAPA.domain.agents.HealthInsurance;
 import org.mapa.MAPA.services.BaseService;
 import org.mapa.MAPA.services.surgery.HealthInsuranceService;
 import org.mapa.MAPA.web.controllers.rest.BaseRestController;

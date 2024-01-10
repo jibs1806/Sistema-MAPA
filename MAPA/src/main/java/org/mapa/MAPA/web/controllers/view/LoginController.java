@@ -2,7 +2,7 @@ package org.mapa.MAPA.web.controllers.view;
 
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.mapa.MAPA.domain.people.user.User;
+import org.mapa.MAPA.domain.agents.users.User;
 import org.mapa.MAPA.services.people.UserService;
 import org.mapa.MAPA.services.exception.user.IncorrectPasswordException;
 import org.mapa.MAPA.services.exception.user.UserNotFoundException;
