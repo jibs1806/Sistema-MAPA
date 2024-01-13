@@ -3,31 +3,28 @@ package org.mapa.MAPA.domain.surgery;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.mapa.MAPA.domain.agents.users.people.Patient;
 import org.mapa.MAPA.domain.agents.users.people.Specialist;
-import org.mapa.MAPA.domain.surgery.fees.MemberBasedFee;
-import org.mapa.MAPA.domain.surgery.surgeryDetail.Payment;
-import org.mapa.MAPA.domain.surgery.surgeryDetail.SurgeryDetail;
+import org.mapa.MAPA.domain.surgery.practice.Practice;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 
 @Getter @Setter
 public class ParamSurgery {
 
-    private SurgeryDetail surgeryDetail;
-
-    private Payment payment;
+    private Specialist chiefSurgery;
 
     private List<Specialist> members;
 
+    private String description;
 
-    private List<MemberBasedFee> memberBasedFees;
+    private Patient patient;
 
-    private Specialist chiefSurgery;
+    private Practice practice;
 
-    private Double chiefSurgeryFee;
+    private ZonedDateTime completionDate;
 
     public ParamSurgery(){
-        this.payment = new Payment();
-        this.surgeryDetail = new SurgeryDetail();
     }
 }

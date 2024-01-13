@@ -30,31 +30,5 @@ public class SurgeryService extends BaseService<Surgery> {
         return this.surgeryRepository;
     }
 
-    public static void assignPayments(Surgery surgery){
-        List<MemberBasedFee> memberPayments = assignAllMemberPayments(surgery.getSurgeryDetail().getPractice(), surgery.getMembers());
-        surgery.setMemberBasedFees(memberPayments);
 
-        Double allMembersAmount = memberPayments.stream().mapToDouble(MemberBasedFee::getAssignedAmount).sum();
-
-        surgery.setChiefSurgeryFee(surgery.getPayment().getPrice() - allMembersAmount);
-    }
-    public static List<MemberBasedFee> assignAllMemberPayments(Practice practice, List <Specialist> members) {
-            List<MemberBasedFee> asignedMembersPayments = new ArrayList<>();
-
-            members.forEach(person -> asignedMembersPayments.add(assignMemberPayment(practice, person)));
-
-            return asignedMembersPayments;
-    }
-
-    public static MemberBasedFee assignMemberPayment(Practice practice, Specialist member){
-        MemberBasedFee asignedPayment = new MemberBasedFee(member);
-
-        Double howMuch = practice.getRoleBasedFees().stream()
-                .filter(rolFee -> rolFee.getSurgeryRole().equals(member.getSurgeryRole()))
-                .findFirst().get().getPercentage() * practice.getPrice();
-
-        asignedPayment.setAssignedAmount(howMuch);
-
-        return asignedPayment;
-    }
 }
