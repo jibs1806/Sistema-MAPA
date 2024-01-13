@@ -59,7 +59,14 @@ public class SurgeryBuilder {
 
         Practice practice = this.surgery.getPractice();
 
+        this.surgery.setPrice(practice.getPrice());
+
         members.forEach(person -> this.surgery.getMemberBasedFees().add(this.assignMemberPayment(practice, person)));
+
+        Double memberFees = this.surgery.getMemberBasedFees().
+                stream().mapToDouble(mbf -> mbf.getAssignedAmount()).sum();
+
+        this.surgery.setChiefSurgeryFee(this.surgery.getPrice() - memberFees);
 
         return this;
     }

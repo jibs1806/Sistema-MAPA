@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.mapa.MAPA.domain.agents.HealthInsurance;
+import org.mapa.MAPA.domain.agents.roles.SurgeryRole;
 import org.mapa.MAPA.domain.agents.users.people.Patient;
 import org.mapa.MAPA.domain.agents.users.people.Specialist;
 import org.mapa.MAPA.domain.surgery.fees.MemberBasedFee;
@@ -107,4 +108,35 @@ public class Surgery extends Persistent {
         this.surgeryDetail.setCompletionDate(CompletionDate);
     }
 
+
+    public Double getPrice(){
+        return this.payment.getPrice();
+    }
+
+    public void setPrice(Double price){
+        this.payment.setPrice(price);
+    }
+
+    public ZonedDateTime getPaymentDate(){
+        return this.payment.getPaymentDate();
+    }
+
+    public void setPaymentDate(ZonedDateTime PaymentDate){
+        this.payment.setPaymentDate(PaymentDate);
+    }
+
+    public PaymentStatus getPaymentStatus(){
+        return this.payment.getPaymentStatus();
+    }
+
+    public void setPaymentStatus(PaymentStatus paymentStatus){
+        this.payment.setPaymentStatus(paymentStatus);
+    }
+
+    public Double getAssignedAmountByRole(SurgeryRole surgeryRole){
+        MemberBasedFee memberBasedFee = this.memberBasedFees.stream().
+                filter(m -> m.getSpecialist().getSurgeryRole().equals(surgeryRole)).findFirst().get();
+
+        return memberBasedFee.getAssignedAmount();
+    }
 }

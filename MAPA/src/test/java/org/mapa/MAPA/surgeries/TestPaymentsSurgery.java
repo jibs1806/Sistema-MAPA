@@ -9,6 +9,7 @@ import org.mapa.MAPA.domain.agents.roles.SurgeryRole;
 import org.mapa.MAPA.domain.agents.users.people.Specialist;
 import org.mapa.MAPA.domain.surgery.ParamSurgery;
 import org.mapa.MAPA.domain.surgery.Surgery;
+import org.mapa.MAPA.domain.surgery.builder.SurgeryDirector;
 import org.mapa.MAPA.domain.surgery.fees.MemberBasedFee;
 import org.mapa.MAPA.domain.surgery.fees.RoleBasedFee;
 import org.mapa.MAPA.domain.surgery.practice.ParamPractice;
@@ -26,15 +27,17 @@ public class TestPaymentsSurgery {
     private Practice practice;
     private Surgery surgery;
 
+    private Specialist chiefSurgeon;
+
     @BeforeEach
     public void init(){
         members = this.createTestMembers();
         practice = this.createTestPractice();
+        chiefSurgeon = new Specialist(null, SurgeryRole.CHIEF_SURGERY);
         surgery = this.createTestSurgery(members, practice);
     }
 
     public List<Specialist> createTestMembers(){
-        Specialist chiefSurgeon = new Specialist(null, SurgeryRole.CHIEF_SURGERY);
         Specialist anesthetist = new Specialist(null, SurgeryRole.ANESTHESIST);
         Specialist auxiliarySurgeon = new Specialist(null, SurgeryRole.AUXILIARY_SURGEON);
 
@@ -69,16 +72,18 @@ public class TestPaymentsSurgery {
     }
 
     public Surgery createTestSurgery(List<Specialist> members, Practice practice){
+        SurgeryDirector surgeryDirector = new SurgeryDirector();
+
         ParamSurgery paramSurgery = new ParamSurgery();
 
         ZonedDateTime completionDate = ZonedDateTime.now();
 
-        paramSurgery.getSurgeryDetail().setCompletionDate(completionDate);
+        paramSurgery.setCompletionDate(completionDate);
         paramSurgery.setMembers(members);
-        paramSurgery.getSurgeryDetail().setPractice(practice);
-        paramSurgery.getPayment().setPrice(practice.getPrice());
+        paramSurgery.setPractice(practice);
+        paramSurgery.setChiefSurgery(chiefSurgeon);
 
-        Surgery surgeryTest = new Surgery(paramSurgery);
+        Surgery surgeryTest = surgeryDirector.buildSurgery(paramSurgery);
 
         return surgeryTest;
     }
@@ -86,9 +91,6 @@ public class TestPaymentsSurgery {
     @Test
     @DisplayName("The chief of surgery gets asigned the remaining amount")
     public void chiefSurgeryPaymentAsignment(){
-
-        SurgeryService.assignPayments(surgery);
-
         Double chiefSurgeryAssigned = surgery.getChiefSurgeryFee();
 
         assertEquals(50.0, chiefSurgeryAssigned);
@@ -97,24 +99,18 @@ public class TestPaymentsSurgery {
     @Test
     @DisplayName("Auxiliary surgeon gets asigned the correct amount")
     public void asignAuxiliarySurgeonPayment(){
-        Specialist auxiliarySurgeon = new Specialist(null, SurgeryRole.AUXILIARY_SURGEON);
+        Double auxiliarySurgeonFee = surgery.getAssignedAmountByRole(SurgeryRole.AUXILIARY_SURGEON);
 
-        MemberBasedFee auxiliarySurgeonFee = SurgeryService.assignMemberPayment(practice, auxiliarySurgeon);
-
-        Double auxiliarySurgeonAssigned = auxiliarySurgeonFee.getAssignedAmount();
-
-        assertEquals(20.0, auxiliarySurgeonAssigned);
+        assertEquals(20.0, auxiliarySurgeonFee);
     }
 
     @Test
     @DisplayName("All members get asigned the correct amount")
     public void asignAllMemberPayments(){
-        List<MemberBasedFee> memberBasedFees = SurgeryService.assignAllMemberPayments(practice, members);
+        Double auxiliarySurgeonFee = surgery.getAssignedAmountByRole(SurgeryRole.AUXILIARY_SURGEON);
+        Double AnethesistFee = surgery.getAssignedAmountByRole(SurgeryRole.ANESTHESIST);
 
-        Double anesthetistAssigned = memberBasedFees.get(0).getAssignedAmount();
-        Double auxiliarySurgeonAssigned = memberBasedFees.get(1).getAssignedAmount();
-
-        assertEquals(30.0, anesthetistAssigned);
-        assertEquals(20.0, auxiliarySurgeonAssigned);
+        assertEquals(30.0, AnethesistFee);
+        assertEquals(20.0, auxiliarySurgeonFee);
     }
 }
